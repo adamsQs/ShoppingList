@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:ShoppingList.Views"
+             x:Class="ShoppingList.MainPage">
+    
+    <Grid RowDefinitions="Auto,*" Padding="20">
+        <StackLayout Grid.Row="0" Orientation="Vertical" Spacing="15"
+                     HorizontalOptions="Start" VerticalOptions="Start">
+            <Frame Padding="10" CornerRadius="8" BackgroundColor="#FFFFFF" BorderColor="#CCCCCC">
+                <Entry x:Name="nameEntry" 
+                       Placeholder="Nazwa produktu" 
+                       TextColor="#333333"
+                       FontSize="16"
+                       FontFamily="Arial"
+                       VerticalOptions="Center" />
+            </Frame>
+            <Frame Padding="10" CornerRadius="8" BackgroundColor="#FFFFFF" BorderColor="#CCCCCC">
+                <Picker x:Name="unitEntry" 
+                        Title="Wartość"
+                        ItemsSource="{Binding AvailableUnits}"
+                        TextColor="#333333"
+                        FontSize="16"
+                        FontFamily="Arial"
+                        VerticalOptions="Center" />
+            </Frame>
+            <Frame Padding="10" CornerRadius="8" BackgroundColor="#FFFFFF" BorderColor="#CCCCCC">
+                <Entry x:Name="quantityEntry" 
+                       Placeholder="Jednostka" 
+                       Keyboard="Numeric" 
+                       TextColor="#333333"
+                       FontSize="16"
+                       FontFamily="Arial"
+                       VerticalOptions="Center" />
+            </Frame>
+
+            <Frame Padding="0" CornerRadius="8" BackgroundColor="#FFFFFF" BorderColor="#CCCCCC">
+                <Button Text="Dodaj produkt" 
+                        Clicked="OnAddProduct" 
+                        BackgroundColor="#0078D7" 
+                        TextColor="White"
+                        FontSize="16"
+                        FontFamily="Arial"
+                        
+                        VerticalOptions="Center" />
+            </Frame>
+        </StackLayout>
+        <CollectionView Grid.Row="1" 
+                        x:Name="productsCollection"
+                        ItemsSource="{Binding Products}"
+                        Margin="0"
+                        BackgroundColor="#F5F5F5"
+                        VerticalOptions="FillAndExpand">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <views:ProductView DeleteClicked="OnProductDelete" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
+</ContentPage>
+
+
