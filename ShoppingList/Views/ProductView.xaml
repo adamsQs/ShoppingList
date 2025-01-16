@@ -3,7 +3,6 @@
              x:Class="ShoppingList.Views.ProductView">
     <Frame Padding="10" Margin="10" CornerRadius="8" BackgroundColor="#EFEFEF" HasShadow="True">
         <Grid ColumnDefinitions="*, Auto, Auto, Auto, Auto" RowSpacing="5" ColumnSpacing="10">
-            <!-- Product Name -->
             <Label Text="{Binding Name}" 
                    Margin="5,0" 
                    VerticalOptions="Center"
@@ -11,8 +10,6 @@
                    TextColor="Black"
                    TextDecorations="{Binding IsBought, Converter={StaticResource BoolToStrikethrough}}"
                    Style="{Binding IsBought, Converter={StaticResource BoolToGrayStyle}}" />
-
-            <!-- Quantity Controls -->
             <StackLayout Grid.Column="1" Orientation="Horizontal" Spacing="8" HorizontalOptions="Center" VerticalOptions="Center">
                 <Button Text="-" 
                         WidthRequest="30"
@@ -40,22 +37,16 @@
                         FontSize="16"
                         Clicked="OnIncrease" />
             </StackLayout>
-
-            <!-- Unit -->
             <Label Grid.Column="2" Text="{Binding Unit}" 
                    VerticalOptions="Center" 
                    HorizontalOptions="Center"
                    FontSize="16"
                    TextColor="Gray" />
-
-            <!-- Checkbox -->
             <CheckBox Grid.Column="3" 
                       IsChecked="{Binding IsBought}"
                       CheckedChanged="OnCheckedChanged"
                       VerticalOptions="Center"
                       Color="#4CAF50" />
-
-            <!-- Delete Button -->
             <Button Grid.Column="4" 
                     Text="Usuń" 
                     BackgroundColor="#FF5252"
